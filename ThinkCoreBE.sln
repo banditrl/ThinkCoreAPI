@@ -1,0 +1,60 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.11.35431.28
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{3E8EAC0E-9EC0-4222-BC94-884A676194C3}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{3A4762C0-2044-4C81-9E93-91D9A12F6F02}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkCoreBE.Api", "src\ThinkCoreBE.Api\ThinkCoreBE.Api.csproj", "{9AB33168-5BBF-4F6F-9B28-532AE5319697}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkCoreBE.Domain", "src\ThinkCoreBE.Domain\ThinkCoreBE.Domain.csproj", "{4F0CF022-9346-4C80-8240-3B79DB0A6ED7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkCoreBE.Infrastructure", "src\ThinkCoreBE.Infrastructure\ThinkCoreBE.Infrastructure.csproj", "{B5C0A44A-9BFC-4BAB-9C1D-1D91BFF97E58}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ThinkCoreBE.Application.Tests", "test\ThinkCoreBE.Application.Tests\ThinkCoreBE.Application.Tests.csproj", "{24400822-C5A5-4724-8355-599D6A4B6F64}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThinkCoreBE.Application", "src\ThinkCoreBE.Application\ThinkCoreBE.Application.csproj", "{22EC9FCA-6627-4589-BF67-B00A86DDA0C4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9AB33168-5BBF-4F6F-9B28-532AE5319697}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9AB33168-5BBF-4F6F-9B28-532AE5319697}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9AB33168-5BBF-4F6F-9B28-532AE5319697}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9AB33168-5BBF-4F6F-9B28-532AE5319697}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4F0CF022-9346-4C80-8240-3B79DB0A6ED7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4F0CF022-9346-4C80-8240-3B79DB0A6ED7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4F0CF022-9346-4C80-8240-3B79DB0A6ED7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4F0CF022-9346-4C80-8240-3B79DB0A6ED7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5C0A44A-9BFC-4BAB-9C1D-1D91BFF97E58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5C0A44A-9BFC-4BAB-9C1D-1D91BFF97E58}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5C0A44A-9BFC-4BAB-9C1D-1D91BFF97E58}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5C0A44A-9BFC-4BAB-9C1D-1D91BFF97E58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{24400822-C5A5-4724-8355-599D6A4B6F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{24400822-C5A5-4724-8355-599D6A4B6F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{24400822-C5A5-4724-8355-599D6A4B6F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{24400822-C5A5-4724-8355-599D6A4B6F64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22EC9FCA-6627-4589-BF67-B00A86DDA0C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22EC9FCA-6627-4589-BF67-B00A86DDA0C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22EC9FCA-6627-4589-BF67-B00A86DDA0C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22EC9FCA-6627-4589-BF67-B00A86DDA0C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{9AB33168-5BBF-4F6F-9B28-532AE5319697} = {3E8EAC0E-9EC0-4222-BC94-884A676194C3}
+		{4F0CF022-9346-4C80-8240-3B79DB0A6ED7} = {3E8EAC0E-9EC0-4222-BC94-884A676194C3}
+		{B5C0A44A-9BFC-4BAB-9C1D-1D91BFF97E58} = {3E8EAC0E-9EC0-4222-BC94-884A676194C3}
+		{24400822-C5A5-4724-8355-599D6A4B6F64} = {3A4762C0-2044-4C81-9E93-91D9A12F6F02}
+		{22EC9FCA-6627-4589-BF67-B00A86DDA0C4} = {3E8EAC0E-9EC0-4222-BC94-884A676194C3}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {A98297B7-C5CA-4D67-96BB-D7216EB6C8F1}
+	EndGlobalSection
+EndGlobal
