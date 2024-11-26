@@ -1,4 +1,8 @@
+using FluentMigrator.Runner;
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using ThinkCoreBE.Api.Controllers;
+using ThinkCoreBE.Infrastructure;
+using ThinkCoreBE.Infrastructure.Persistance.Migrations;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -12,6 +16,14 @@ builder.Services.AddAuthorization(options =>
     options.FallbackPolicy = options.DefaultPolicy;
 });
 
+builder.Services.AddFluentMigratorCore()
+    .ConfigureRunner(runner => runner
+        .AddPostgres()
+        .WithGlobalConnectionString(builder.Configuration.GetConnectionString("DefaultConnection"))
+        .ScanIn(typeof(InitialMigration).Assembly).For.Migrations());
+
+builder.Services.AddInfrastructureLayer(builder.Configuration);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -23,29 +35,10 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+using (var scope = app.Services.CreateScope())
 {
-    "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-};
-
-app.MapGet("/weatherforecast", () =>
-{
-    var forecast = Enumerable.Range(1, 5).Select(index =>
-        new WeatherForecast
-        (
-            DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            Random.Shared.Next(-20, 55),
-            summaries[Random.Shared.Next(summaries.Length)]
-        ))
-        .ToArray();
-    return forecast;
-})
-.WithName("GetWeatherForecast")
-.WithOpenApi();
-
-app.Run();
-
-internal record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
-{
-    public int TemperatureF => 32 + (int)(TemperatureC / 0.5556);
+    var runner = scope.ServiceProvider.GetRequiredService<IMigrationRunner>();
+    runner.MigrateUp();
 }
+
+app.AddCustomerEndpoints();
