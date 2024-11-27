@@ -7,12 +7,15 @@ namespace ThinkCoreBE.Api.Controllers
         public static void AddCustomerEndpoints(this WebApplication app)
         {
             app.MapGet("/customers/getAll", GetAllCustomers)
-                .WithName("GetAllCustomers");
+                .WithName("GetAllCustomers")
+                .WithOpenApi();
         }
 
-        private static IResult GetAllCustomers(ICustomerService customerService, CancellationToken cancellationToken)
+        private static async Task<IResult> GetAllCustomers(ICustomerService customerService, CancellationToken cancellationToken)
         {
-            return Results.Ok(customerService.GetAllCustomersAsync(cancellationToken));
+            var customers = await customerService.GetAllCustomersAsync(cancellationToken);
+            return Results.Ok(customers);
         }
+
     }
 }

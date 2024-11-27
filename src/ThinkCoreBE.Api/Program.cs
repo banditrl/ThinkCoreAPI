@@ -1,6 +1,7 @@
 using FluentMigrator.Runner;
 using Microsoft.AspNetCore.Authentication.Negotiate;
 using ThinkCoreBE.Api.Controllers;
+using ThinkCoreBE.Application;
 using ThinkCoreBE.Infrastructure;
 using ThinkCoreBE.Infrastructure.Persistance.Migrations;
 
@@ -22,6 +23,7 @@ builder.Services.AddFluentMigratorCore()
         .WithGlobalConnectionString(builder.Configuration.GetConnectionString("DefaultConnection"))
         .ScanIn(typeof(InitialMigration).Assembly).For.Migrations());
 
+builder.Services.AddApplicationLayer();
 builder.Services.AddInfrastructureLayer(builder.Configuration);
 
 var app = builder.Build();
@@ -42,3 +44,5 @@ using (var scope = app.Services.CreateScope())
 }
 
 app.AddCustomerEndpoints();
+
+app.Run();

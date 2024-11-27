@@ -22,6 +22,8 @@
 
         public string Country { get; private set; }
 
+        public Customer() { }
+
         public Customer(long customerId, string name, string cpf, DateOnly birthDate, string zipCode, string street, string number, string complement, string city, string country)
         {
             CustomerId = customerId;

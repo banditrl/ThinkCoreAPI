@@ -15,7 +15,7 @@ namespace ThinkCoreBE.Infrastructure.Persistance
 
         public async Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            var sql = $"SELECT * FROM {typeof(T).Name}s";
+            var sql = $"SELECT * FROM \"{typeof(T).Name}s\"";
             return await _connection.QueryAsync<T>(sql, cancellationToken);
         }
     }
