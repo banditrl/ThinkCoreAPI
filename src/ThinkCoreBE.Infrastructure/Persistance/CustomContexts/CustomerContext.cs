@@ -14,16 +14,16 @@ namespace ThinkCoreBE.Infrastructure.Persistance.CustomQueries
             _connection = connection;
         }
 
-        public async Task<bool> ShouldAddNewCustomer(string cnpj, CancellationToken cancellationToken = default)
+        public async Task<bool> ShouldAddNewCustomer(string cpf, CancellationToken cancellationToken = default)
         {
             var sql = $@"
             SELECT NOT EXISTS (
                 SELECT 1 
                 FROM {typeof(Customer).Name}s
-                WHERE CNPJ = @Cnpj
+                WHERE CPF = @Cpf
             )";
 
-            return await Task.Run(async () => await _connection.ExecuteScalarAsync<bool>(sql, new { Cnpj = cnpj }), cancellationToken);
+            return await Task.Run(async () => await _connection.ExecuteScalarAsync<bool>(sql, new { Cpf = cpf }), cancellationToken);
         }
     }
 }
