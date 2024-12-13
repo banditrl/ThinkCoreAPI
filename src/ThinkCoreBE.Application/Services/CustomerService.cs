@@ -14,5 +14,12 @@ namespace ThinkCoreBE.Application.Services
         {
             return await _context.Customers.GetAllAsync(cancellationToken);
         }
+
+        public async Task<int> DeleteCustomerByIdAsync(long id, CancellationToken cancellationToken = default)
+        {
+            const string idColumnName = "CustomerId";
+            var deletedCount = await _context.Customers.DeleteByIdAsync(id, idColumnName, cancellationToken);
+            return deletedCount;
+        }
     }
 }
