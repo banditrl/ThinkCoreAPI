@@ -19,11 +19,11 @@ namespace ThinkCoreBE.Infrastructure.Persistance
             return await _connection.QueryAsync<T>(sql, cancellationToken);
         }
 
-        public async Task<int> DeleteByIdAsync(long id, string idColumnName, CancellationToken cancellationToken = default)
+        public async Task<int> DeleteByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            var sql = $"DELETE FROM \"{typeof(T).Name}s\" WHERE \"{idColumnName}\" = @Id";
-            var deletedCount = await Task.Run(async () => await _connection.ExecuteAsync(sql, new { Id = id }), cancellationToken);
-            return deletedCount;
+            var sql = $"DELETE FROM \"{typeof(T).Name}s\" WHERE \"{typeof(T).Name}Id\" = @Id";
+            var affectedRows = await Task.Run(async () => await _connection.ExecuteAsync(sql, new { Id = id }), cancellationToken);
+            return affectedRows;
         }
     }
 }

@@ -17,9 +17,8 @@ namespace ThinkCoreBE.Application.Services
 
         public async Task<int> DeleteCustomerByIdAsync(long id, CancellationToken cancellationToken = default)
         {
-            const string idColumnName = "CustomerId";
-            var deletedCount = await _context.Customers.DeleteByIdAsync(id, idColumnName, cancellationToken);
-            return deletedCount;
+            var affectedRows = await _context.Customers.DeleteByIdAsync(id, cancellationToken);
+            return affectedRows;
         }
     }
 }

@@ -3,6 +3,7 @@
     public interface IDapperEntity<T>
     {
         public Task<IEnumerable<T>> GetAllAsync(CancellationToken cancellationToken);
-        public Task<int> DeleteByIdAsync(long id, string idColumnName, CancellationToken cancellationToken);
+        
+        public Task<int> DeleteByIdAsync(long id, CancellationToken cancellationToken);
     }
 }
