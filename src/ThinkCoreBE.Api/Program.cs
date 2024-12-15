@@ -1,5 +1,6 @@
 using FluentMigrator.Runner;
 using Microsoft.AspNetCore.Authentication.Negotiate;
+using ThinkCoreBE.Api;
 using ThinkCoreBE.Api.Controllers;
 using ThinkCoreBE.Application;
 using ThinkCoreBE.Infrastructure;
@@ -16,6 +17,8 @@ builder.Services.AddAuthorization(options =>
 {
     options.FallbackPolicy = options.DefaultPolicy;
 });
+
+builder.Services.AddScoped<ResultEndpointFilter>();
 
 builder.Services.AddFluentMigratorCore()
     .ConfigureRunner(runner => runner
