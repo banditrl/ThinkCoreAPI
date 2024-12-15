@@ -10,9 +10,39 @@ namespace ThinkCoreBE.Application.Services
 
         public CustomerService(IThinkCoreDbContext context) { _context = context; }
 
-        public async Task<IEnumerable<Customer>> GetAllCustomersAsync(CancellationToken cancellationToken = default)
+        public async Task<Result<IEnumerable<Customer>>> GetAllCustomersAsync(CancellationToken cancellationToken = default)
         {
-            return await _context.Customers.GetAllAsync(cancellationToken);
+            try
+            {
+                var customers = await _context.Customers.GetAllAsync(cancellationToken);
+                return Result<IEnumerable<Customer>>.Ok(customers);
+            }
+            catch (Exception ex)
+            {
+                // Log if needed
+                return Result<IEnumerable<Customer>>.Fail($"Error fetching customers: {ex.Message}");
+            }
+        }
+
+        public async Task<Result<string>> DeleteCustomerByIdAsync(long id, CancellationToken cancellationToken = default)
+        {
+            try
+            {
+                var affectedRows = await _context.Customers.DeleteByIdAsync(id, cancellationToken);
+                if (affectedRows > 0)
+                {
+                    return Result<string>.Ok("Customer deleted successfully.");
+                }
+                else
+                {
+                    return Result<string>.Fail("Customer not found");
+                }
+            }
+            catch (Exception ex)
+            {
+                // Log if needed
+                return Result<string>.Fail($"Error deleting customer: {ex.Message}");
+            }
         }
     }
 }
